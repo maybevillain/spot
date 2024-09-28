@@ -2,43 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Authorization Code</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 50px;
-        }
-        pre {
-            background-color: #f4f4f4;
-            padding: 20px;
-            border: 1px solid #ccc;
-            display: inline-block;
-        }
-    </style>
-    <script>
-        // Function to extract the authorization code from the URL
-        function getAuthorizationCode() {
-            // Get the current URL
-            const urlParams = new URLSearchParams(window.location.search);
-            // Extract the 'code' parameter
-            const authCode = urlParams.get('code');
-            // Display the code in the pre element
-            const codeElement = document.getElementById('auth-code');
-            if (authCode) {
-                codeElement.textContent = authCode;
-            } else {
-                codeElement.textContent = 'No authorization code found.';
-            }
-        }
-        
-        // Call the function when the page loads
-        window.onload = getAuthorizationCode;
-    </script>
+    <title>Callback Page</title>
 </head>
 <body>
-    <h1>Your Authorization Code</h1>
-    <pre id="auth-code">Loading...</pre>
+    <h1>Callback Page</h1>
+    <script>
+        // Get the authorization code from the URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const authCode = urlParams.get('code');
+
+        // Display the authorization code
+        if (authCode) {
+            document.body.innerHTML += `<p>Authorization Code: ${authCode}</p>`;
+            // You can also send this code to your server for further processing
+        } else {
+            document.body.innerHTML += '<p>No authorization code found.</p>';
+        }
+    </script>
 </body>
 </html>
