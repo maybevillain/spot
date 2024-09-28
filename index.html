@@ -17,9 +17,28 @@
             display: inline-block;
         }
     </style>
+    <script>
+        // Function to extract the authorization code from the URL
+        function getAuthorizationCode() {
+            // Get the current URL
+            const urlParams = new URLSearchParams(window.location.search);
+            // Extract the 'code' parameter
+            const authCode = urlParams.get('code');
+            // Display the code in the pre element
+            const codeElement = document.getElementById('auth-code');
+            if (authCode) {
+                codeElement.textContent = authCode;
+            } else {
+                codeElement.textContent = 'No authorization code found.';
+            }
+        }
+        
+        // Call the function when the page loads
+        window.onload = getAuthorizationCode;
+    </script>
 </head>
 <body>
     <h1>Your Authorization Code</h1>
-    <pre id="auth-code">YOUR_AUTH_CODE_HERE</pre>
+    <pre id="auth-code">Loading...</pre>
 </body>
 </html>
