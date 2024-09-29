@@ -7,11 +7,9 @@
 <body>
     <h1>Callback Page</h1>
     <script>
-        // Get the authorization code from the URL
         const urlParams = new URLSearchParams(window.location.search);
         const authCode = urlParams.get('code');
 
-        // Display the authorization code
         if (authCode) {
             document.body.innerHTML += `<p>Authorization Code: ${authCode}</p>`;
             // You can also send this code to your server for further processing
